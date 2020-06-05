@@ -24,20 +24,14 @@
         person.email = document.querySelector("#email").value;
         person.password = document.querySelector("#password").value;
         person.sport = document.querySelector("#sport").value;
-        startPage2();
+        YourProfile();
       }
      
      
-      /**
-      Fill this function in to create the second page.
-      */
-      function startPage2() {
-          hidePage1();
-          // Create page2 here:
+      function YourProfile() {
+          inputInformation();
           var body = document.querySelector('body');
-          // Part 1: I am creating a h1 element
           var title = document.createElement('h1');
-          // By default the h1 I created has no text
           title.innerText = "Welcome " + person.name;
           body.appendChild(title);
           var li1 = document.createElement('li');
@@ -58,7 +52,7 @@
        
       }
      
-      function hidePage1() {
+      function inputInformation() {
           document.querySelector("#person").style.display = "none";
           document.querySelector("#name").style.display = "none";
           document.querySelector("#age").style.display = "none";
