@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <style>
+      body {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <input id="name" type="text" placeholder="Enter name">
+    <input id="age" type="number" placeholder="Enter age">
+    <input id="email" placeholder="Enter Email Address">
+    <input id="password" type="number" placeholder="Enter password">
+    <input id="sport" placeholder="Enter favorite sport">
+    <button id="person" onClick="createPerson()">Submit</button>
+    <script>
+
+     var person = {};
+     
+    function createPerson() {
+       
+        person.name = document.querySelector("#name").value;
+        person.number = document.querySelector("#age").value;
+        person.email = document.querySelector("#email").value;
+        person.password = document.querySelector("#password").value;
+        person.sport = document.querySelector("#sport").value;
+        startPage2();
+      }
+     
+     
+      /**
+      Fill this function in to create the second page.
+      */
+      function startPage2() {
+          hidePage1();
+          // Create page2 here:
+          var body = document.querySelector('body');
+          // Part 1: I am creating a h1 element
+          var title = document.createElement('h1');
+          // By default the h1 I created has no text
+          title.innerText = "Welcome " + person.name;
+          body.appendChild(title);
+          var li1 = document.createElement('li');
+          li1.innerText = "You are " + person.number + " Years Old";
+          body.appendChild(li1);
+          var li2 = document.createElement('li');
+          li1.innerText = "Your Email address is " + person.email;
+          body.appendChild(li2);
+          var li3 = document.createElement('li');
+          li3.innerText = "Your Favorite Sport is " + person.sport;
+          body.appendChild(li3);
+         
+       
+          var b1 = document.createElement('button');
+          b1.innerText = "Change email";
+          body.append(b1);
+         
+          var b2 = document.createElement('button');
+          b2.innerText = "Change password";
+          body.append(b2);
+       
+      }
+     
+      function hidePage1() {
+          document.querySelector("#person").style.display = "none";
+          document.querySelector("#name").style.display = "none";
+          document.querySelector("#age").style.display = "none";
+          document.querySelector("#email").style.display = "none";
+          document.querySelector("#password").style.display = "none";
+          document.querySelector("#sport").style.display = "none";
+      }
+  </script>
+  </body>
+</html>
