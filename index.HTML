@@ -20,15 +20,20 @@
      var person = {};
      
     function createPerson() {
-       
-        person.name = document.querySelector("#name").value;
-        person.number = document.querySelector("#age").value;
-        person.email = document.querySelector("#email").value;
-        person.password = document.querySelector("#password").value;
-        person.sport = document.querySelector("#sport").value;
-        YourProfile();
+        if (verify()) { 
+          person.name = document.querySelector("#name").value;
+          person.number = document.querySelector("#age").value;
+          person.email = document.querySelector("#email").value;
+          person.password = document.querySelector("#password").value;
+          person.sport = document.querySelector("#sport").value;
+          YourProfile();
+        }
       }
      
+     function verify() {
+       return document.querySelector("#name").value !== '' && 
+       document.querySelector("#age").value !== ''; 
+     }
      
       function YourProfile() {
           inputInformation();
