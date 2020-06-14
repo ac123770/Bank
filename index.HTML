@@ -1,75 +1,79 @@
 <html>
-  <head>
-    <style>
-      body {
-        background-color: yellow;
-      }
-    </style>
-  </head>
-  <body>
-    <h3>We are taking a survey about favourite sports. Please fill in the form below, and hit “SUBMIT.”</h3>
-    
-    <input id="name" type="text" placeholder="Enter name">
-    <input id="age" type="number" placeholder="Enter age">
-    <input id="email" placeholder="Enter Email Address">
-    <input id="password" type="password" placeholder="Enter password">
-    <input id="sport" placeholder="Enter favorite sport">
-    <button id="person" onClick="createPerson()">Submit</button>
-    <script>
 
-     var person = {};
-     
+<head>
+  <style>
+    body {
+      background-color: yellow;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>We are taking a survey about favourite sports. Please fill in the form below, and hit “SUBMIT.”</h3>
+
+  <input id="name" type="text" placeholder="Enter name">
+  <input id="age" type="number" placeholder="Enter age">
+  <input id="email" placeholder="Enter Email Address">
+  <input id="password" type="password" placeholder="Enter password">
+  <input id="sport" placeholder="Enter favorite sport">
+  <button id="person" onClick="createPerson()">Submit</button>
+  <script>
+
+    var person = {};
+
     function createPerson() {
-        if (verify()) { 
-          person.name = document.querySelector("#name").value;
-          person.number = document.querySelector("#age").value;
-          person.email = document.querySelector("#email").value;
-          person.password = document.querySelector("#password").value;
-          person.sport = document.querySelector("#sport").value;
-          YourProfile();
-        }
+      if (verify()) {
+        person.name = document.querySelector("#name").value;
+        person.number = document.querySelector("#age").value;
+        person.email = document.querySelector("#email").value;
+        person.password = document.querySelector("#password").value;
+        person.sport = document.querySelector("#sport").value;
+        localStorage.setItem('AAA111', JSON.stringify(person));
+        createPage2();
       }
-     
-     function verify() {
-       return document.querySelector("#name").value !== '' && 
-       document.querySelector("#age").value !== '' && 
-       document.querySelector("#email").value !== '' && 
-       document.querySelector("#password").value !== '' && 
-       document.querySelector("#sport").value !== '';
-     }
-     
-      function YourProfile() {
-          inputInformation();
-          var body = document.querySelector('body');
-          var title = document.createElement('h1');
-          title.innerText = "Welcome " + person.name;
-          body.appendChild(title);
-          var li1 = document.createElement('li');
-          li1.innerText = "You are " + person.number + " Years Old";
-          body.appendChild(li1);
-         var li2 = document.createElement('li');
-          li2.innerText = "Your Favorite Sport is " + person.sport;
-          body.appendChild(li2);
-         
-       
-          var b1 = document.createElement('button');
-          b1.innerText = "Change email";
-          body.append(b1);
-         
-          var b2 = document.createElement('button');
-          b2.innerText = "Change password";
-          body.append(b2);
-       
-      }
-     
-      function inputInformation() {
-          document.querySelector("#person").style.display = "none";
-          document.querySelector("#name").style.display = "none";
-          document.querySelector("#age").style.display = "none";
-          document.querySelector("#email").style.display = "none";
-          document.querySelector("#password").style.display = "none";
-          document.querySelector("#sport").style.display = "none";
-      }
+    }
+
+    function verify() {
+      return document.querySelector("#name").value !== '' &&
+        document.querySelector("#age").value !== '' &&
+        document.querySelector("#email").value !== '' &&
+        document.querySelector("#password").value !== '' &&
+        document.querySelector("#sport").value !== '';
+    }
+
+    function createPage2() {
+      hidePage1();
+      var body = document.querySelector('body');
+      var title = document.createElement('h1');
+      title.innerText = "Welcome " + person.name;
+      body.appendChild(title);
+      var li1 = document.createElement('li');
+      li1.innerText = "You are " + person.number + " Years Old";
+      body.appendChild(li1);
+      var li2 = document.createElement('li');
+      li2.innerText = "Your Favorite Sport is " + person.sport;
+      body.appendChild(li2);
+
+
+      var b1 = document.createElement('button');
+      b1.innerText = "Change email";
+      body.append(b1);
+
+      var b2 = document.createElement('button');
+      b2.innerText = "Change password";
+      body.append(b2);
+
+    }
+
+    function hidePage1() {
+      document.querySelector("#person").style.display = "none";
+      document.querySelector("#name").style.display = "none";
+      document.querySelector("#age").style.display = "none";
+      document.querySelector("#email").style.display = "none";
+      document.querySelector("#password").style.display = "none";
+      document.querySelector("#sport").style.display = "none";
+    }
   </script>
-  </body>
+</body>
+
 </html>
