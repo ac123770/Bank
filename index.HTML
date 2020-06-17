@@ -18,16 +18,23 @@
   <input id="sport" placeholder="Enter favorite sport">
   <button id="person" onClick="createPerson()">Submit</button>
   <script>
-
-    var person = {};
+  function Person(name,age,email,password,sport) {
+    this.name = name;
+    this.age = age;
+    this.email = email;
+    this.password = password;
+    this.sport = sport;
+    
+  }
 
     function createPerson() {
       if (verify()) {
-        person.name = document.querySelector("#name").value;
-        person.number = document.querySelector("#age").value;
-        person.email = document.querySelector("#email").value;
-        person.password = document.querySelector("#password").value;
-        person.sport = document.querySelector("#sport").value;
+        let name = document.querySelector("#name").value;
+        let age = document.querySelector("#age").value;
+        let email = document.querySelector("#email").value;
+        let password = document.querySelector("#password").value;
+        let sport = document.querySelector("#sport").value;
+        person = new Person(name, age, email, password, sport);
         localStorage.setItem('AAA111', JSON.stringify(person));
         createPage2();
       }
@@ -48,7 +55,7 @@
       title.innerText = "Welcome " + person.name;
       body.appendChild(title);
       var li1 = document.createElement('li');
-      li1.innerText = "You are " + person.number + " Years Old";
+      li1.innerText = "You are " + person.age + " Years Old";
       body.appendChild(li1);
       var li2 = document.createElement('li');
       li2.innerText = "Your Favorite Sport is " + person.sport;
