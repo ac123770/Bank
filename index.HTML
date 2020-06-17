@@ -13,14 +13,16 @@
 
   <input id="name" type="text" placeholder="Enter name">
   <input id="age" type="number" placeholder="Enter age">
+  <input id="gender" placeholder="Enter Gender">
   <input id="email" placeholder="Enter Email Address">
   <input id="password" type="password" placeholder="Enter password">
   <input id="sport" placeholder="Enter favorite sport">
   <button id="person" onClick="createPerson()">Submit</button>
   <script>
-  function Person(name,age,email,password,sport) {
+  function Person(name,age,gender,email,password,sport) {
     this.name = name;
     this.age = age;
+    this.gender = gender;
     this.email = email;
     this.password = password;
     this.sport = sport;
@@ -31,10 +33,11 @@
       if (verify()) {
         let name = document.querySelector("#name").value;
         let age = document.querySelector("#age").value;
+        let gender = document.querySelector("#gender").value;
         let email = document.querySelector("#email").value;
         let password = document.querySelector("#password").value;
         let sport = document.querySelector("#sport").value;
-        person = new Person(name, age, email, password, sport);
+        person = new Person(name, age, gender, email, password, sport);
         localStorage.setItem('AAA111', JSON.stringify(person));
         createPage2();
       }
@@ -43,23 +46,35 @@
     function verify() {
       return document.querySelector("#name").value !== '' &&
         document.querySelector("#age").value !== '' &&
+        document.querySelector("#gender").value !== '' &&
         document.querySelector("#email").value !== '' &&
         document.querySelector("#password").value !== '' &&
         document.querySelector("#sport").value !== '';
     }
 
+    function makeElement(type, text) {
+      var li3 = document.createElement(type);
+      li3.innerText = text;
+      body.appendChild(li3);
+    }
+
     function createPage2() {
       hidePage1();
       var body = document.querySelector('body');
+      
       var title = document.createElement('h1');
       title.innerText = "Welcome " + person.name;
       body.appendChild(title);
+
       var li1 = document.createElement('li');
       li1.innerText = "You are " + person.age + " Years Old";
       body.appendChild(li1);
       var li2 = document.createElement('li');
-      li2.innerText = "Your Favorite Sport is " + person.sport;
+      li2.innerText = "Your Gender is " + person.gender;
       body.appendChild(li2);
+      var li3 = document.createElement('li');
+      li3.innerText = "Your Favorite Sport is " + person.sport;
+      body.appendChild(li3);
 
 
       var b1 = document.createElement('button');
@@ -76,6 +91,7 @@
       document.querySelector("#person").style.display = "none";
       document.querySelector("#name").style.display = "none";
       document.querySelector("#age").style.display = "none";
+      document.querySelector("#gender").style.display = "none";
       document.querySelector("#email").style.display = "none";
       document.querySelector("#password").style.display = "none";
       document.querySelector("#sport").style.display = "none";
